@@ -10,7 +10,7 @@ const app = express();
 const server = createServer(app);
 
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: toString(process.env.FRONTEND_URL),
   methods: ['GET', 'POST'],
   credentials: true,
 }));
@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
 
 const io = new Server(server, {
   cors: {
-    origin: process.env.FRONTEND_URL,
+    origin: toString(process.env.FRONTEND_URL),
     methods: ['GET', 'POST'],
     credentials: true,
   },
